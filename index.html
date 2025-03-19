@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashi Security Service - Professional Security Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .chat-popup {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 50;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-blue-900 text-white">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold">
+                    Shashi Security Service
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#home" class="hover:text-blue-300">Home</a>
+                    <a href="#services" class="hover:text-blue-300">Services</a>
+                    <a href="#about" class="hover:text-blue-300">About</a>
+                    <a href="#contact" class="hover:text-blue-300">Contact</a>
+                    <a href="#careers" class="hover:text-blue-300">Careers</a>
+                </div>
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <i class="bi bi-list text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden bg-blue-900 text-white py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="hover:text-blue-300">Home</a>
+                <a href="#services" class="hover:text-blue-300">Services</a>
+                <a href="#about" class="hover:text-blue-300">About</a>
+                <a href="#contact" class="hover:text-blue-300">Contact</a>
+                <a href="#careers" class="hover:text-blue-300">Careers</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-blue-900 to-blue-700 text-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">Professional Security Solutions for Your Peace of Mind</h1>
+                    <p class="text-lg mb-8">Protecting what matters most with advanced security services and trained professionals.</p>
+                    <button class="bg-white text-blue-900 px-8 py-3 rounded-full font-semibold hover:bg-blue-100 transition">Get Started</button>
+                </div>
+                <div class="hidden md:block">
+                    <img src="https://images.unsplash.com/photo-1582295523904-6c7142b8715c?w=500" alt="Security Service" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="service-card bg-white p-6 rounded-lg shadow-lg">
+                    <i class="bi bi-shield-check text-4xl text-blue-900 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">Physical Security</h3>
+                    <p>Professional security guards and patrol services for your premises.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-lg">
+                    <i class="bi bi-camera-video text-4xl text-blue-900 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">CCTV Surveillance</h3>
+                    <p>24/7 monitoring with advanced camera systems and real-time alerts.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-lg">
+                    <i class="bi bi-door-closed text-4xl text-blue-900 mb-4"></i>
+                    <h3 class="text-xl font-semibold mb-3">Access Control</h3>
+                    <p>Modern access control systems for enhanced security management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Contact Us</h2>
+            <div class="max-w-lg mx-auto">
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label class="block mb-2">Name</label>
+                        <input type="text" class="w-full px-4 py-2 border rounded-lg" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-2 border rounded-lg" required>
+                    </div>
+                    <div>
+                        <label class="block mb-2">Message</label>
+                        <textarea class="w-full px-4 py-2 border rounded-lg h-32" required></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-900 text-white py-3 rounded-lg hover:bg-blue-800">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Widget -->
+    <button id="chatButton" class="fixed bottom-4 right-4 bg-blue-900 text-white p-4 rounded-full shadow-lg">
+        <i class="bi bi-chat-dots text-2xl"></i>
+    </button>
+
+    <div id="chatPopup" class="chat-popup bg-white rounded-lg shadow-xl w-80">
+        <div class="p-4 border-b">
+            <div class="flex justify-between items-center">
+                <h3 class="font-semibold">Live Chat</h3>
+                <button onclick="toggleChat()" class="text-gray-500 hover:text-gray-700">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+        </div>
+        <div class="p-4 h-80 overflow-y-auto" id="chatMessages">
+            <div class="mb-4">
+                <p class="bg-gray-100 p-3 rounded-lg inline-block">Hello! How can we help you today?</p>
+            </div>
+        </div>
+        <div class="p-4 border-t">
+            <div class="flex gap-2">
+                <input type="text" id="chatInput" placeholder="Type your message..." class="flex-1 px-3 py-2 border rounded-lg">
+                <button onclick="sendMessage()" class="bg-blue-900 text-white px-4 rounded-lg">
+                    <i class="bi bi-send"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Chat Functionality
+        function toggleChat() {
+            const popup = document.getElementById('chatPopup');
+            popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+        }
+
+        document.getElementById('chatButton').addEventListener('click', toggleChat);
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messages = document.getElementById('chatMessages');
+            if (input.value.trim()) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'mb-4 text-right';
+                messageDiv.innerHTML = `<p class="bg-blue-900 text-white p-3 rounded-lg inline-block">${input.value}</p>`;
+                messages.appendChild(messageDiv);
+                input.value = '';
+                messages.scrollTop = messages.scrollHeight;
+            }
+        }
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message. We will get back to you soon!');
+            this.reset();
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
